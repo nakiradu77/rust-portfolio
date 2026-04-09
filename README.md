@@ -1,6 +1,8 @@
-**Maxime Loukhal // Embedded Software engineer**
+## Portfolio personnel
 
-High-performance, single-page portfolio and low latency.
+**Maxime Loukhal - Embedded Software engineer**
+
+An high-performance, single-page portfolio and low latency.
 
 ## Stack Architecture
 
@@ -16,7 +18,7 @@ This project compiles into raw WebAssembly and static CSS/HTML. It requires abso
 
 ### How to Deploy:
 
-1. Push this code to a repository (`aarambh-darshan/rust-portfolio`) on GitHub.
+1. Push this code to a repository (`nakiradu77/rust-portfolio`) on GitHub.
 2. Go to your repository **Settings** > **Pages**.
 3. Under **Build and deployment**, change the **Source** to **GitHub Actions**.
 4. Create a new file in your repository at `.github/workflows/deploy.yml` with the following content to automatically build and deploy your WebAssembly portfolio:
