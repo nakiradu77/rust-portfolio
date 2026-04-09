@@ -75,7 +75,7 @@ jobs:
         uses: actions/deploy-pages@v4
 ```
 
-Once this file is committed to your `main` branch, GitHub will automatically build your site and host it at `https:/nakiradu77.github.io/rust-portfolio/`.
+Once this file is committed to your `trunk` branch, GitHub will automatically build your site and host it at `https:/nakiradu77.github.io/rust-portfolio/`.
 
 ## Local Development
 
