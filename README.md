@@ -1,8 +1,6 @@
-# MANIFESTO 2026
+**Maxime Loukhal // Embedded Software engineer**
 
-**DARSHAN VICHHI // SYSTEMS ENGINEER**
-
-A brutalist, high-performance, single-page portfolio built from the ground up to reflect structural integrity, low latency, and systems architecture.
+High-performance, single-page portfolio and low latency.
 
 ## Stack Architecture
 
@@ -28,7 +26,7 @@ name: Deploy Trunk Build to GitHub Pages
 
 on:
   push:
-    branches: ["main"]
+    branches: ["trunk"]
 
 permissions:
   contents: read
@@ -75,7 +73,7 @@ jobs:
         uses: actions/deploy-pages@v4
 ```
 
-Once this file is committed to your `main` branch, GitHub will automatically build your site and host it at `https://aarambh-darshan.github.io/rust-portfolio/`.
+Once this file is committed to your `main` branch, GitHub will automatically build your site and host it at `https:/nakiradu77.github.io/rust-portfolio/`.
 
 ## Local Development
 
