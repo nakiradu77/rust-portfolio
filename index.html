@@ -4,6 +4,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Wasm entry point -->
+  <link data-trunk rel="rust"
+        data-bin="leptos-portfolio"
+        data-keep-debug="false" 
+        data-wasm-opt="z" 
+        data-public-url="/rust-portfolio/" />
   <!-- Primary Meta Tags -->
   <title>MAXIME LOUKHAL [MANIFESTO] — Embedded Software Engineer & Open Source Developer</title>
   <meta name="title" content="MAXIME LOUKHAL [MANIFESTO] — Embedded Software Engineer & Open Source Developer" />
@@ -64,9 +70,6 @@
   <script>
     gsap.registerPlugin(ScrollTrigger);
   </script>
-
-  <!-- Wasm entry point -->
-  <link data-trunk rel="rust" data-bin="leptos-portfolio" data-wasm-opt="z" data-public-url="/rust-portfolio/" />
 </head>
 
 <body class="is-loading">
