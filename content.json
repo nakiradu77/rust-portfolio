@@ -8,7 +8,7 @@
   "hero": {
     "headline_1": "Structural",
     "headline_2": "Integrity.",
-    "body": "Polyglot Systems Programmer specializing in high-throughput, memory-safe backend architectures. Building blazing-fast frameworks, distributed AI pipelines, and the unyielding foundations of the modern web.",
+    "body": "Polyglot Embedded Software Programmer specializing in high-throughput, memory-safe backend architectures. Building blazing-fast frameworks, distributed AI pipelines, and the unyielding foundations of the modern web.",
     "stats": [
       {
         "num": "190K+",
@@ -215,7 +215,7 @@
     "buymeacoffee": "https://buymeacoffee.com/aarambhdevhub"
   },
   "footer": {
-    "left": "© 2026 DARSHAN VICHHI",
+    "left": "© 2026 MAXIME LOUKHAL",
     "right": "MANIFESTO EDITION"
   }
 }

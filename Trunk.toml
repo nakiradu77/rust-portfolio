@@ -6,4 +6,4 @@ command_arguments = ["@tailwindcss/cli", "-i styles/input.css", "-o styles/tailw
 [hooks.windows]
 stage = "pre_build"
 command = "cmd"
-command_arguments = ["/c npm install -y && npx @tailwindcss/cli -i styles/input.css -o styles/tailwind-output.css"]
+command_arguments = ["/c npm install -y --quiet && npx @tailwindcss/cli -i styles/input.css -o styles/tailwind-output.css"]

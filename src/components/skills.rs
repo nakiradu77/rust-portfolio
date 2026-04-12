@@ -1,4 +1,4 @@
-// src/components/skills.rs — Darshan Vichhi Portfolio × Leptos 0.7
+// src/components/skills.rs — Maxime Loukhal Portfolio × Leptos 0.7
 //
 // ── UI COMPONENT ─────────────────────────────────────────────────────────────
 // Fully encapsulated component. Data is injected statically at compile time.
