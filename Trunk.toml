@@ -3,7 +3,11 @@ stage = "pre_build"
 command = "npx"
 command_arguments = ["@tailwindcss/cli", "-i styles/input.css", "-o styles/tailwind-output.css"]
 
+
 [hooks.windows]
 stage = "pre_build"
 command = "cmd"
-command_arguments = ["/c npm install -y --quiet && npx @tailwindcss/cli -i styles/input.css -o styles/tailwind-output.css"]
+command_arguments = [
+    "/c",
+    "if not exist node_modules (npm install) && npx -y @tailwindcss/cli -i styles/input.css -o styles/tailwind-output.css --minify"
+]
