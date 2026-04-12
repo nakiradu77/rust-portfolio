@@ -1,4 +1,9 @@
 [[hooks]]
 stage = "pre_build"
 command = "npx"
-command_arguments = ["@tailwindcss/cli", "-i", "styles/input.css", "-o", "styles/tailwind-output.css"]
+command_arguments = ["@tailwindcss/cli", "-i styles/input.css", "-o styles/tailwind-output.css"]
+
+[hooks.windows]
+stage = "pre_build"
+command = "cmd"
+command_arguments = ["/c npx @tailwindcss/cli -i styles/input.css -o styles/tailwind-output.css"]
