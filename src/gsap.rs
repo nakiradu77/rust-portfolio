@@ -290,3 +290,25 @@ export function lenis_scroll_to(selector) {
 extern "C" {
     pub fn lenis_scroll_to(selector: &str);
 }
+
+#[wasm_bindgen(inline_js = "
+export function show_confetti() {
+    const colors = ['#d42b2b', '#58a6ff', '#d2a8ff', '#f5c518', '#0a0a0a'];
+    for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = Math.random() * 100 + '%';
+        confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.width = Math.random() * 8 + 4 + 'px';
+        confetti.style.height = Math.random() * 8 + 4 + 'px';
+        confetti.style.animationDuration = Math.random() * 2 + 2 + 's';
+        confetti.style.animationDelay = Math.random() * 0.5 + 's';
+        document.body.appendChild(confetti);
+
+        setTimeout(() => confetti.remove(), 3000);
+    }
+}
+")]
+extern "C" {
+    pub fn show_confetti();
+}
