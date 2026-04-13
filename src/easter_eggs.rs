@@ -357,23 +357,41 @@ impl EasterEggManager {
 
     fn init_konami_listener(&self) {
         let manager = self.clone();
-        let callback = Closure::wrap(Box::new(move |e: web_sys::KeyboardEvent| {
-            // CORRECTION : Stocker la valeur dans une variable locale
-            let key = e.code().to_string();
-            let key_str = key.as_str();
+        let callback = Closure::<dyn FnMut(web_sys::KeyboardEvent)>::new(move |e: web_sys::KeyboardEvent| {
+            let code = e.code();
+            let key = e.key();
+
+            web_sys::console::log_1(&format!("code: {}, key: {}", code, key).into());
+
+            // Accepter les deux formats
+            let expected = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "KeyB", "KeyA"];
+            let expected_alt = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a"];
+
             let idx = manager.konami_index.get();
 
-            if idx < manager.konami_sequence.len() && key_str == manager.konami_sequence[idx] {
-                if idx + 1 == manager.konami_sequence.len() {
+            let is_match = if idx < expected.len() {
+                code == expected[idx] || key == expected_alt[idx]
+            } else {
+                false
+            };
+
+            if is_match {
+                web_sys::console::log_1(&format!("Match at index {}", idx).into());
+                if idx + 1 == expected.len() {
+                    web_sys::console::log_1(&"🎉 KONAMI CODE UNLOCKED! 🎉".into());
                     manager.storage.unlock(Achievement::KonamiCode, &manager.notifier);
                     manager.konami_index.set(0);
                 } else {
                     manager.konami_index.set(idx + 1);
                 }
             } else {
-                manager.konami_index.set(0);
+                // Ne reset que si la touche n'est pas une direction
+                let is_direction = code == "ArrowUp" || code == "ArrowDown" || code == "ArrowLeft" || code == "ArrowRight";
+                if !is_direction {
+                    manager.konami_index.set(0);
+                }
             }
-        }) as Box<dyn FnMut(_)>);
+        });
 
         let _ = web_sys::window()
             .unwrap()
@@ -484,6 +502,4 @@ impl EasterEggManager {
     pub fn on_triple_click(&self) {
         self.storage.unlock(Achievement::TripleClick, &self.notifier);
     }
-
-    
 }
