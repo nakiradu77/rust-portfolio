@@ -62,15 +62,15 @@
     },
     {
       "years": "2020 — 2023",
-      "role": "Développeur C#",
-      "org": "Vulcanic — Neuilly-sur-Marne",
-      "desc": "Développement de modules de facturation et calcul thermodynamique en C# / WPF. Maintenance d'APIs sur ERP maison."
-    },
-    {
-      "years": "2020 — 2023",
       "role": "Ingénieur d'études et développement",
       "org": "Gueudet 1880 — Amiens",
       "desc": "Développement d'outil web reporting en C# Blazor/MAUI (400+ utilisateurs). APIs ASP.NET Core. Docker/Kubernetes. Flux ETL et base de données."
+    },
+    {
+      "years": "2019 — 2020",
+      "role": "Développeur C#",
+      "org": "Vulcanic — Neuilly-sur-Marne",
+      "desc": "Développement de modules de facturation et calcul thermodynamique en C# / WPF. Maintenance d'APIs sur ERP maison."
     }
   ],
   "skills": {
