@@ -6,8 +6,8 @@ command_arguments = ["@tailwindcss/cli", "-i styles/input.css", "-o styles/tailw
 
 [hooks.windows]
 stage = "pre_build"
-command = "cmd"
+command = "powershell"
 command_arguments = [
-    "/c",
-    "if not exist node_modules (npm install) && npx -y @tailwindcss/cli -i styles/input.css -o styles/tailwind-output.css --minify"
+    "-Command",
+    "if (-not (Test-Path node_modules)) { npm install }; npx -y @tailwindcss/cli -i styles/input.css -o styles/tailwind-output.css --minify"
 ]
