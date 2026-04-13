@@ -2,19 +2,47 @@
 @source "../src";
 
 @theme {
-  --color-bg: #f5f0e8;
-  --color-bg-dark: #0a0a0a;
-  --color-text: #0a0a0a;
+  --color-bg: #0d1117;
+  --color-bg-dark: #010409;
+  --color-text: #e6edf3;
   --color-text-inv: #f5f0e8;
-  --color-muted: #8a8577;
-  --color-border: #0a0a0a;
-  --color-red: #d42b2b;
-  --color-blue: #1a3dc4;
-  --color-yellow: #f5c518;
-  --color-offwhite: #f5f0e8;
+  --color-muted: #8b949e;
+  --color-border: #30363d;
+  --color-red: #f85149;
+  --color-blue: #58a6ff;
+  --color-yellow: #d2a8ff;
+  --color-offwhite: #161b22;
 
-  --font-serif: 'Playfair Display', serif;
-  --font-sans: 'Space Grotesk', sans-serif;
+  --font-serif: 'JetBrains Mono', monospace;
+  --font-sans: 'Roboto', sans-serif;
+}
+
+@layer base {
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--color-bg);
+    color: var(--color-text);
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Mix Roboto + JetBrains Mono */
+  code, pre, .mono, .logo, .hero-title, .serif-huge, .stamp-block {
+    font-family: var(--font-serif);
+  }
+
+  h1, h2, h3, .font-serif {
+    font-family: var(--font-serif);
+  }
+
+  .font-sans, p, a, .nav-link, button {
+    font-family: var(--font-sans);
+  }
 }
 
 @layer base {

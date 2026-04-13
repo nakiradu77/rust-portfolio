@@ -1,4 +1,4 @@
-// src/main.rs — Darshan Vichhi Portfolio × Leptos 0.7
+// src/main.rs — Maxime Loukhal Portfolio × Leptos 0.7
 //
 // ── HOW TO EDIT CONTENT ───────────────────────────────────────────────────────
 // Edit /content.json — every section of the portfolio reads from that file.
@@ -51,8 +51,8 @@ fn App() -> impl IntoView {
     });
 
     view! {
-        <Title text="DARSHAN VICHHI [MANIFESTO] — Systems Engineer" />
-        <Meta name="description" content="Darshan Vichhi — Polyglot Systems Programmer specialize in high-throughput, memory-safe architectures." />
+        <Title text="MAXIME LOUKHAL [MANIFESTO] — Embedded Software Engineer" />
+        <Meta name="description" content="Maxime Loukhal — Polyglot Embedded Software Programmer specialize in high-throughput, memory-safe architectures." />
 
         <Splash />
 
@@ -83,6 +83,7 @@ fn App() -> impl IntoView {
 }
 
 fn main() {
+    _ = console_log::init_with_level(log::Level::Warn);
     console_error_panic_hook::set_once();
     mount_to_body(App);
 }

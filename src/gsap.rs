@@ -75,6 +75,7 @@ export function play_splash() {
     tl.to('.stamp-2', { opacity:1, y:0, scaleY:1, duration:0.3, ease:'back.out(3)' }, 0.5);
     tl.to('.stamp-3', { opacity:1, y:0, scaleY:1, duration:0.3, ease:'back.out(3)' }, 0.7);
     tl.to('.stamp-4', { opacity:1, y:0, scaleY:1, duration:0.3, ease:'back.out(3)' }, 0.9);
+    tl.to('.stamp-5', { opacity:1, y:0, scaleY:1, duration:0.3, ease:'back.out(3)' }, 1.1);
 
     tl.to('.ring-fill', {
         strokeDashoffset: 0,

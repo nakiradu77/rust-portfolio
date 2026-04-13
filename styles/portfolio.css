@@ -150,7 +150,7 @@
 .project-row[data-accent="yellow"]::before { background: var(--color-yellow); }
 .project-row[data-accent="black"]::before { background: var(--color-bg-dark); }
 .project-row:hover::before { opacity: 1; }
-.project-row:hover { background: rgba(0, 0, 0, 0.02); }
+.project-row:hover { background: rgba(88, 166, 255, 0.05); }
 .project-row:hover .serif-huge { color: var(--color-red); }
 
 .serif-huge {
@@ -163,7 +163,7 @@
 }
 
 .cv-row:hover {
-  background: rgba(0, 0, 0, 0.02);
+    background: rgba(88, 166, 255, 0.05);
   padding-left: 8px;
 }
 
@@ -199,8 +199,8 @@
 }
 
 .contact-link:hover {
-  background: var(--color-bg-dark);
-  color: var(--color-text-inv);
+    background: var(--color-offwhite);
+    color: var(--color-bg-dark);
 }
 
 /* ── MARQUEE OUTLINE TEXT ──────────────────────── */

@@ -100,7 +100,8 @@ Because the entire architecture is statically compiled, **you do not need to tou
 2. **Edit `content.json`:** Open the `content.json` file in the root directory. All of the text, projects, skills, and links on the website are pulled directly from this file at compile time. Just replace my data with yours!
 3. **Change the SEO Data:** Open `index.html` and swap out the meta tags, `<title>`, and descriptions with your own information.
 4. **Deploy:** Enable GitHub Pages in your repository settings (Settings > Pages > Source: GitHub Actions), and GitHub will automatically build and publish your customized portfolio.
-
+5. **Debug** Only in Chromium browser using [WebAssembly DWARF Debugging Browser Extension](https://chromewebstore.google.com/detail/cc++-devtools-support-dwa/pdcpmagijalfljmkmjngeonclgbbannb?pli=1)
+and [WebAssembly DWARF Debugging VSCode Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.wasm-dwarf-debugging)
 ## 📄 License
 
 This project is licensed under the [MIT License](LICENSE). 

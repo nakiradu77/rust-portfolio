@@ -1,17 +1,19 @@
 {
   "name": "rust-portfolio",
   "version": "1.0.0",
-  "description": "",
+  "description": "Portfolio personnel de Maxime Loukhal",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "nakiradu77",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "@fontsource/jetbrains-mono": "^5.2.8",
+    "@fontsource/roboto": "^5.2.10",
     "@tailwindcss/cli": "^4.2.1",
-    "tailwindcss": "^4.2.1"
+    "tailwindcss": "^4.2.2"
   }
 }

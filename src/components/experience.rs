@@ -1,4 +1,4 @@
-// src/components/experience.rs — Darshan Vichhi Portfolio × Leptos 0.7
+// src/components/experience.rs — Maxime Loukhal Portfolio × Leptos 0.7
 //
 // ── UI COMPONENT ─────────────────────────────────────────────────────────────
 // Fully encapsulated component. Data is injected statically at compile time.

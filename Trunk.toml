@@ -1,4 +1,13 @@
 [[hooks]]
 stage = "pre_build"
 command = "npx"
-command_arguments = ["@tailwindcss/cli", "-i", "styles/input.css", "-o", "styles/tailwind-output.css"]
+command_arguments = ["@tailwindcss/cli", "-i styles/input.css", "-o styles/tailwind-output.css"]
+
+
+[hooks.windows]
+stage = "pre_build"
+command = "powershell"
+command_arguments = [
+    "-Command",
+    "if (-not (Test-Path node_modules)) { npm install }; npx -y @tailwindcss/cli -i styles/input.css -o styles/tailwind-output.css --minify"
+]

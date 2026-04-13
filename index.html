@@ -1,18 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Wasm entry point -->
+  <link data-trunk rel="rust"
+        data-bin="leptos-portfolio"
+        data-keep-debug="false"
+        data-wasm-opt="z"
+        data-public-url="/rust-portfolio/" />
   <!-- Primary Meta Tags -->
-  <title>DARSHAN VICHHI [MANIFESTO] — Systems Engineer & Open Source Developer</title>
-  <meta name="title" content="DARSHAN VICHHI [MANIFESTO] — Systems Engineer & Open Source Developer" />
+  <title>Maxime Loukhal - Embedded Software Engineer & Open Source Developer</title>
+  <meta name="title" content="Maxime Loukhal — Embedded Software Engineer & Open Source Developer" />
   <meta name="description"
-    content="Darshan Vichhi — Polyglot Systems Programmer specializing in high-throughput, memory-safe backend architectures in Rust and Go. Creator of Blaze and Ignitia frameworks." />
+    content="Maxime Loukhal — Polyglot Embedded Software programmer specializing in high-throughput, memory-safe backend architectures in C/C++ and Rust." />
   <meta name="keywords"
-    content="Darshan Vichhi, Systems Engineer, Software Engineer, Rust Developer, Go Developer, AI Backend, Pingora WAF, TechEmpower, Open Source, High-Throughput Architecture" />
-  <meta name="author" content="Darshan Vichhi" />
-  <link rel="canonical" href="https://aarambh-darshan.github.io/rust-portfolio" />
+    content="Maxime Loukhal, Embedded Software Engineer, Electrical and computer Engineer, C/C++ Developer, Rust Developer, AI Backend, Pingora WAF, Open Source, High-Throughput Architecture" />
+  <meta name="author" content="nakiradu77" />
+  <link rel="canonical" href="https://nakiradu77.github.io/rust-portfolio" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%23ff0000%22/></svg>" />
   <link data-trunk rel="copy-file" href="public/og-image.jpg" />
   <link data-trunk rel="copy-file" href="public/robots.txt" />
@@ -20,46 +26,34 @@
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://aarambh-darshan.github.io/rust-portfolio" />
-  <meta property="og:title" content="DARSHAN VICHHI [MANIFESTO] — Systems Engineer & Open Source Developer" />
+  <meta property="og:url" content="https://nakiradu77.github.io/rust-portfolio" />
+  <meta property="og:title" content="MAXIME LOUKHAL [MANIFESTO] — Embedded Software Engineer & Open Source Developer" />
   <meta property="og:description"
-    content="Polyglot Systems Programmer specializing in high-throughput, memory-safe backend architectures. Building blazing-fast frameworks and the unyielding foundations of the modern web." />
-  <meta property="og:image" content="https://aarambh-darshan.github.io/rust-portfolio/og-image.jpg" />
-
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="https://aarambh-darshan.github.io/rust-portfolio" />
-  <meta property="twitter:title" content="DARSHAN VICHHI [MANIFESTO] — Systems Engineer & Open Source Developer" />
-  <meta property="twitter:description"
-    content="Polyglot Systems Programmer specializing in high-throughput, memory-safe backend architectures. Building blazing-fast frameworks and the unyielding foundations of the modern web." />
-  <meta property="twitter:image" content="https://aarambh-darshan.github.io/rust-portfolio/og-image.jpg" />
+    content="Polyglot Embedded Software Programmer specializing in high-throughput, memory-safe backend architectures." />
+  <meta property="og:image" content="https://nakiradu77.github.io/rust-portfolio/og-image.jpg" />
 
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
-      "name": "Darshan Vichhi",
-      "jobTitle": "Systems Engineer",
-      "url": "https://aarambh-darshan.github.io/rust-portfolio",
+      "name": "Maxime Loukhal",
+      "jobTitle": "Embedded Software Engineer",
+      "url": "https://nakiradu77.github.io/rust-portfolio",
       "sameAs": [
-        "https://github.com/aarambh-darshan",
-        "https://github.com/AarambhDevHub",
-        "https://linkedin.com/in/darshan-vichhi-rust-developer",
-        "https://youtube.com/@AarambhDevHub",
-        "https://aarambhdevhub.medium.com"
+        "https://github.com/nakiradu77",
+        "https://www.linkedin.com/in/maxime-loukhal-153590159/",
+        "https://youtube.com/@nakiradu77"
       ],
-      "knowsAbout": ["Rust", "Go", "Python", "High-Throughput Architecure", "Pingora", "WebAssembly"]
+      "knowsAbout": ["Rust", "C/C++", "C#", "High-Throughput Architecure", "Pingora", "WebAssembly"]
     }
   </script>
 
-  <!-- Fonts: Playfair Display + Space Grotesk -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet" />
+  <!-- Fonts: Jetbrains Mono + Roboto -->
 
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   <!-- Portfolio CSS (exact original) -->
   <link data-trunk rel="css" href="styles/tailwind-output.css" />
 
@@ -74,9 +68,6 @@
   <script>
     gsap.registerPlugin(ScrollTrigger);
   </script>
-
-  <!-- Wasm entry point -->
-  <link data-trunk rel="rust" data-bin="leptos-portfolio" data-wasm-opt="z" data-public-url="/rust-portfolio/" />
 </head>
 
 <body class="is-loading">
