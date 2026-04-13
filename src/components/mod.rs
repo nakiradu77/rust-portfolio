@@ -9,3 +9,4 @@ pub mod skills;
 pub mod recognition;
 pub mod insights;
 pub mod contact;
+pub(crate) mod achievements_panel;
