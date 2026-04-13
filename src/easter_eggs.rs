@@ -3,8 +3,38 @@ use leptos::prelude::*;
 use std::collections::HashSet;
 use wasm_bindgen::prelude::*;
 use wasm_bindgen::closure::Closure;
-// ─── TYPES ─────────────────────────────────────────────────────────────
+// ─── CONSTANTES ────────────────────────────────────────────────────────
+const KONAMI_SEQUENCE: [&str; 10] = [
+    "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown",
+    "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight",
+    "KeyB", "KeyA"
+];
 
+const KONAMI_SEQUENCE_ALT: [&str; 10] = [
+    "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown",
+    "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight",
+    "b", "a"
+];
+
+// Liste de tous les achievements (pour Completionist)
+const ALL_ACHIEVEMENTS: [Achievement; 14] = [
+    Achievement::ScrollMaster,
+    Achievement::SpeedReader,
+    Achievement::DepthExplorer,
+    Achievement::ClickAddict,
+    Achievement::SocialButterfly,
+    Achievement::CuriousMind,
+    Achievement::KonamiCode,
+    Achievement::SecretClick,
+    Achievement::ConsoleExplorer,
+    Achievement::TripleClick,
+    Achievement::DevMode,
+    Achievement::EasterDate,
+    Achievement::NightOwl,
+    Achievement::WeekendWarrior,
+];
+
+// ─── TYPES ─────────────────────────────────────────────────────────────
 #[derive(Debug, Clone, PartialEq, Eq, Hash)]
 pub enum Achievement {
     // Explorer
@@ -227,25 +257,7 @@ impl AchievementStorage {
             self.save();
             notifier.show(ach);
 
-            // Check completionist
-            let all = vec![
-                Achievement::ScrollMaster,
-                Achievement::SpeedReader,
-                Achievement::DepthExplorer,
-                Achievement::ClickAddict,
-                Achievement::SocialButterfly,
-                Achievement::CuriousMind,
-                Achievement::KonamiCode,
-                Achievement::SecretClick,
-                Achievement::ConsoleExplorer,
-                Achievement::TripleClick,
-                Achievement::DevMode,
-                Achievement::EasterDate,
-                Achievement::NightOwl,
-                Achievement::WeekendWarrior,
-            ];
-
-            if all.iter().all(|a| self.unlocked.get().contains(a)) {
+            if ALL_ACHIEVEMENTS.iter().all(|a| self.unlocked.get().contains(a)) {
                 let mut completionist_unlocked = self.unlocked.get();
                 if !completionist_unlocked.contains(&Achievement::Completionist) {
                     completionist_unlocked.insert(Achievement::Completionist);
@@ -301,9 +313,6 @@ impl AchievementNotifier {
 pub struct EasterEggManager {
     storage: AchievementStorage,
     notifier: AchievementNotifier,
-
-    // Konami code
-    konami_sequence: Vec<&'static str>,
     konami_index: RwSignal<usize>,
 
     // Counters
@@ -319,7 +328,6 @@ impl EasterEggManager {
         Self {
             storage,
             notifier,
-            konami_sequence: vec!["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "KeyB", "KeyA"],
             konami_index: RwSignal::new(0),
             logo_clicks: RwSignal::new(0),
             hovered_elements: RwSignal::new(HashSet::new()),
@@ -364,20 +372,17 @@ impl EasterEggManager {
             web_sys::console::log_1(&format!("code: {}, key: {}", code, key).into());
 
             // Accepter les deux formats
-            let expected = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "KeyB", "KeyA"];
-            let expected_alt = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a"];
-
             let idx = manager.konami_index.get();
 
-            let is_match = if idx < expected.len() {
-                code == expected[idx] || key == expected_alt[idx]
+            let is_match = if idx < KONAMI_SEQUENCE.len() {
+                code == KONAMI_SEQUENCE[idx] || key == KONAMI_SEQUENCE_ALT[idx]
             } else {
                 false
             };
 
             if is_match {
                 web_sys::console::log_1(&format!("Match at index {}", idx).into());
-                if idx + 1 == expected.len() {
+                if idx + 1 == KONAMI_SEQUENCE.len() {
                     web_sys::console::log_1(&"🎉 KONAMI CODE UNLOCKED! 🎉".into());
                     manager.storage.unlock(Achievement::KonamiCode, &manager.notifier);
                     manager.konami_index.set(0);
