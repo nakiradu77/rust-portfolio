@@ -34,7 +34,7 @@ jobs:
           version: 'latest'
 
       - name: Install Dependencies
-        run: npm ci
+        run: npm install -y
 
       - name: Build
         run: trunk build --release --public-url /rust-portfolio/
