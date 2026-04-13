@@ -51,7 +51,7 @@ fn App() -> impl IntoView {
     });
 
     view! {
-        <Title text="MAXIME LOUKHAL [MANIFESTO] — Embedded Software Engineer" />
+        <Title text="Maxime Loukhal — Embedded Software Engineer & Open Source Developer" />
         <Meta name="description" content="Maxime Loukhal — Polyglot Embedded Software Programmer specialize in high-throughput, memory-safe architectures." />
 
         <Splash />
