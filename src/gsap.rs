@@ -29,21 +29,105 @@ extern "C" {
 export function init_cursor() {
     const cursor = document.getElementById('blend-cursor');
     if (!cursor) return;
-    let mx = -100, my = -100, cx = -100, cy = -100;
 
-    document.addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; });
+    const dot = cursor.querySelector('.cur-dot');
+    const circle = cursor.querySelector('.cur-circle');
+    if (!dot || !circle) return;
+
+    // Positions avec inertie différenciée
+    let mx = -100, my = -100;
+    let dotX = -100, dotY = -100;
+    let circleX = -100, circleY = -100;
+
+    // Vitesse pour détecter les mouvements rapides
+    let lastX = -100, lastY = -100;
+    let velocity = 0;
+    let velocityTimeout;
+
+    // État du clic
+    let isMouseDown = false;
+
+    document.addEventListener('mousemove', (e) => {
+        mx = e.clientX;
+        my = e.clientY;
+
+        // Calcul de la vélocité
+        const dx = mx - lastX;
+        const dy = my - lastY;
+        velocity = Math.sqrt(dx * dx + dy * dy);
+
+        lastX = mx;
+        lastY = my;
+
+        // Reset l'indicateur de vélocité après inactivité
+        clearTimeout(velocityTimeout);
+        velocityTimeout = setTimeout(() => { velocity = 0; }, 100);
+    });
+
+    // Gestion du clic
+    document.addEventListener('mousedown', () => {
+        isMouseDown = true;
+        cursor.classList.add('clicking');
+    });
+
+    document.addEventListener('mouseup', () => {
+        isMouseDown = false;
+        cursor.classList.remove('clicking');
+    });
+
+    // Cache les curseur hors de la fenêtre
+    document.addEventListener('mouseleave', () => {
+        cursor.style.opacity = '0';
+    });
+
+    document.addEventListener('mouseenter', () => {
+        cursor.style.opacity = '1';
+    });
 
     function tick() {
-        cx += (mx - cx) * 0.15;
-        cy += (my - cy) * 0.15;
-        cursor.style.transform = 'translate3d(' + cx + 'px,' + cy + 'px,0)';
+        // Inertie différenciée : dot plus rapide, circle plus fluide
+        dotX += (mx - dotX) * 0.25;
+        dotY += (my - dotY) * 0.25;
+        circleX += (mx - circleX) * 0.12;
+        circleY += (my - circleY) * 0.12;
+
+        // Appliquer les transformations avec échelle basée sur vélocité
+        dot.style.transform = `translate3d(${dotX}px, ${dotY}px, 0)`;
+
+        // Scale du cercle basée sur vélocité
+        let scale = 1;
+        if (velocity > 20) {
+            scale = Math.min(1 + velocity / 150, 1.5);
+        }
+
+        circle.style.transform = `translate3d(${circleX}px, ${circleY}px, 0) scale(${scale})`;
+
         requestAnimationFrame(tick);
     }
     requestAnimationFrame(tick);
 
+    // Hover targets avec effet de ripple optionnel
     document.querySelectorAll('.hover-target').forEach(el => {
-        el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
-        el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+        el.addEventListener('mouseenter', (e) => {
+            cursor.classList.add('hovering');
+
+            // Optionnel : changer la couleur du dot basée sur l'élément
+            const accent = el.getAttribute('data-accent');
+            if (accent) {
+                cursor.setAttribute('data-accent', accent);
+            }
+        });
+
+        el.addEventListener('mouseleave', () => {
+            cursor.classList.remove('hovering');
+            cursor.removeAttribute('data-accent');
+        });
+    });
+
+    // Support pour les éléments cliquables
+    document.querySelectorAll('a, button, [role=\"button\"], input, .clickable').forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('clickable-hover'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('clickable-hover'));
     });
 }
 ")]

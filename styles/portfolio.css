@@ -14,6 +14,7 @@
 }
 
 /* ── BLEND CURSOR ──────────────────────────────── */
+/* ── BLEND CURSOR AMÉLIORÉ ──────────────────────────── */
 #blend-cursor {
   position: fixed;
   top: 0;
@@ -21,37 +22,111 @@
   z-index: 10000;
   pointer-events: none;
   mix-blend-mode: difference;
+  will-change: transform;
+  transition: opacity 0.2s ease;
+  opacity: 1;
 }
 
 .cur-dot {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   background: #fff;
   border-radius: 50%;
   position: absolute;
-  top: -4px;
-  left: -4px;
+  top: -3px;
+  left: -3px;
+  will-change: transform;
+  transition: width 0.2s ease, height 0.2s ease, background 0.2s ease;
 }
 
 .cur-circle {
-  width: 50px;
-  height: 50px;
-  border: 2px solid #fff;
+  width: 44px;
+  height: 44px;
+  border: 1.5px solid #fff;
   border-radius: 50%;
   position: absolute;
-  top: -25px;
-  left: -25px;
-  transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-    height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-    top 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-    left 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  top: -22px;
+  left: -22px;
+  will-change: transform;
+  transition: width 0.3s cubic-bezier(0.2, 1.2, 0.4, 1),
+  height 0.3s cubic-bezier(0.2, 1.2, 0.4, 1),
+  top 0.3s cubic-bezier(0.2, 1.2, 0.4, 1),
+  left 0.3s cubic-bezier(0.2, 1.2, 0.4, 1),
+  border-width 0.2s ease,
+  opacity 0.2s ease;
 }
 
+/* État HOVER */
 #blend-cursor.hovering .cur-circle {
   width: 80px;
   height: 80px;
   top: -40px;
   left: -40px;
+  border-width: 2px;
+}
+
+#blend-cursor.hovering .cur-dot {
+  width: 10px;
+  height: 10px;
+  top: -5px;
+  left: -5px;
+  background: #ff6b6b;
+}
+
+/* État CLICK */
+#blend-cursor.clicking .cur-circle {
+  width: 36px;
+  height: 36px;
+  top: -18px;
+  left: -18px;
+  border-width: 2.5px;
+  border-color: #ff6b6b;
+  transform: scale(0.9);
+}
+
+#blend-cursor.clicking .cur-dot {
+  width: 4px;
+  height: 4px;
+  top: -2px;
+  left: -2px;
+  background: #ff6b6b;
+}
+
+/* État sur éléments cliquables (a, button) */
+#blend-cursor.clickable-hover .cur-circle {
+  width: 56px;
+  height: 56px;
+  top: -28px;
+  left: -28px;
+  border-color: #ffa500;
+}
+
+/* Accents optionnels via data-accent */
+#blend-cursor[data-accent="red"] .cur-circle {
+  border-color: #f85149;
+}
+
+#blend-cursor[data-accent="blue"] .cur-circle {
+  border-color: #58a6ff;
+}
+
+#blend-cursor[data-accent="yellow"] .cur-circle {
+  border-color: #d2a8ff;
+}
+
+/* Désactiver sur mobile/tablet */
+@media (max-width: 768px) {
+  #blend-cursor {
+    display: none;
+  }
+
+  body {
+    cursor: auto;
+  }
+
+  a, button, .hover-target {
+    cursor: pointer;
+  }
 }
 
 /* ── SPLASH (GSAP animation states) ────────────── */
