@@ -17,7 +17,7 @@ gloo-timers = { version = "0.4.0", features = ["futures"] }
 
 [dependencies.web-sys]
 version = "0.3"
-features = ["Window", "Storage", "NodeList"]
+features = ["Window", "Storage", "NodeList", "IntersectionObserver", "IntersectionObserverEntry"]
 # All cursor/rAF/DOM work is done inside wasm_bindgen inline_js blocks in gsap.rs,
 # so we only need Window for set_timeout_with_callback_and_timeout_and_arguments_0.
 

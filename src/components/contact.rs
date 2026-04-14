@@ -1,16 +1,20 @@
-// src/components/contact.rs — Maxime Loukhal Portfolio × Leptos 0.7
-//
-// ── UI COMPONENT ─────────────────────────────────────────────────────────────
-// Fully encapsulated component. Data is injected statically at compile time.
-// ─────────────────────────────────────────────────────────────────────────────
-
-use crate::content;
+// src/components/contact.rs - Version simplifiée sans IntersectionObserver
 use leptos::prelude::*;
+use crate::{content, easter_eggs::EasterEggManager};
 
 #[component]
 pub fn Contact() -> impl IntoView {
     let c = content::load();
     let ct = c.contact;
+    let egg_manager = expect_context::<EasterEggManager>();
+
+    let on_link_click = move |link_type: &'static str| {
+        let egg_manager = egg_manager.clone();
+        move |_| {
+            egg_manager.on_link_click(link_type);
+        }
+    };
+
     view! {
         <footer class="contact-section" id="contact">
             <div class="grid grid-cols-1 md:grid-cols-12 border-b">
@@ -22,10 +26,13 @@ pub fn Contact() -> impl IntoView {
             </div>
             <div class="grid grid-cols-1 md:grid-cols-12 border-b">
                 <a href=format!("mailto:{}", ct.email)
+                   on:click=on_link_click("email")
                    class="col-span-1 md:col-span-4 contact-link flex items-center justify-center font-sans text-[0.75rem] font-bold tracking-[0.2em] py-5 md:border-r border-b md:border-b-0 hover-target">"EMAIL"</a>
                 <a href=ct.github_org target="_blank"
+                   on:click=on_link_click("social")
                    class="col-span-1 md:col-span-4 contact-link flex items-center justify-center font-sans text-[0.75rem] font-bold tracking-[0.2em] py-5 md:border-r border-b md:border-b-0 hover-target">"GITHUB"</a>
                 <a href=ct.linkedin target="_blank"
+                   on:click=on_link_click("social")
                    class="col-span-1 md:col-span-4 contact-link flex items-center justify-center font-sans text-[0.75rem] font-bold tracking-[0.2em] py-5 hover-target">"LINKEDIN"</a>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-12">
