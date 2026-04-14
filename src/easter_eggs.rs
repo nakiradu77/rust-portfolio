@@ -98,7 +98,7 @@ impl AchievementInfo {
             Achievement::DepthExplorer => Self {
                 id: ach.clone(),
                 name: "Depth Explorer",
-                description: "Scrolled more than 5000 pixels",
+                description: "Scrolled more than 3500 pixels",
                 icon: "⛏️",
                 secret: false,
             },
@@ -487,7 +487,7 @@ impl EasterEggManager {
         if scroll_y > 1000.0 {
             self.storage.unlock(Achievement::ScrollMaster, &self.notifier);
         }
-        if scroll_y > 5000.0 {
+        if scroll_y > 3500.0 {
             self.storage.unlock(Achievement::DepthExplorer, &self.notifier);
         }
     }
