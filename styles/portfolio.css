@@ -177,8 +177,8 @@
 
 /* ── HERO LINE (GSAP initial state) ────────────── */
 .hero-title .line {
-  display: block;
-  overflow: hidden;
+  display: flex;
+  overflow: inherit;
   opacity: 0;
   transform: translateY(50px);
 }
